@@ -1,4 +1,4 @@
-package fog.maps.api.service;
+package fog.maps.api.internal;
 
 import fog.maps.api.error.ApiExceptions;
 
@@ -10,6 +10,8 @@ import fog.maps.api.error.ApiExceptions;
  */
 public interface ApiResponse<T> {
     boolean success();
+
     T getResponse();
+
     ApiExceptions getError();
 }

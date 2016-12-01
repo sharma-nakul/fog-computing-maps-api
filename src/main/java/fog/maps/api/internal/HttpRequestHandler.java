@@ -1,4 +1,4 @@
-package fog.maps.api.logic;
+package fog.maps.api.internal;
 
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;

@@ -1,4 +1,4 @@
-package fog.maps.api.logic;
+package fog.maps.api.internal;
 
 import fog.maps.api.model.direction.DirectionResult;
 import org.slf4j.Logger;
@@ -29,16 +29,17 @@ public class ResponseHandlerBean implements ResponseHandler {
 
     @Override
     @Async
-    public <T>Future<ResponseEntity<T>> asyncGet(ApiConfig config, String query, Class clazz, Map<Class<?>, ParameterizedTypeReference> typeReferences) {
-        String requestUri = config.hostName + config.path+query;
+    public <T> Future<ResponseEntity<T>> asyncGet(ApiConfig config, String query, Class clazz, Map<Class<?>, ParameterizedTypeReference> typeReferences) {
+        String requestUri = config.hostName + config.path + query;
         LOG.info("Asynchronous request url: " + requestUri);
         LOG.info("> Asynchronous GET");
 
         ResponseEntity<T> responseEntity;
         CompletableFuture<ResponseEntity<T>> response = new CompletableFuture<>();
         try {
-            ParameterizedTypeReference typeReference=new ParameterizedTypeReference<DirectionResult>(){};
-            HttpRequestHandler responseHandler=new HttpRequestHandler(restTemplate);
+            ParameterizedTypeReference typeReference = new ParameterizedTypeReference<DirectionResult>() {
+            };
+            HttpRequestHandler responseHandler = new HttpRequestHandler(restTemplate);
             responseEntity = responseHandler.makeGetRequest(requestUri, typeReference);
             response.complete(responseEntity);
         } catch (Exception e) {
@@ -50,12 +51,12 @@ public class ResponseHandlerBean implements ResponseHandler {
     }
 
     @Override
-    public <T>ResponseEntity<T> synchronousGet(ApiConfig config, String query, Class clazz, Map<Class<?>, ParameterizedTypeReference> typeReferences) {
-        String uri = config.hostName +config.path+ query;
+    public <T> ResponseEntity<T> synchronousGet(ApiConfig config, String query, Class clazz, Map<Class<?>, ParameterizedTypeReference> typeReferences) {
+        String uri = config.hostName + config.path + query;
         ResponseEntity<T> responseEntity;
         try {
-            ParameterizedTypeReference typeRef=typeReferences.get(clazz);
-            HttpRequestHandler responseHandler=new HttpRequestHandler(restTemplate);
+            ParameterizedTypeReference typeRef = typeReferences.get(clazz);
+            HttpRequestHandler responseHandler = new HttpRequestHandler(restTemplate);
             responseEntity = responseHandler.makeGetRequest(uri, typeRef);
         } catch (Exception e) {
             LOG.warn("Exception caught while performing synchronous GET", e);

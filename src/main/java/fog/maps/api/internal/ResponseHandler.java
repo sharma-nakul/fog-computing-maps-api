@@ -1,6 +1,5 @@
-package fog.maps.api.logic;
+package fog.maps.api.internal;
 
-import fog.maps.api.logic.ApiConfig;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.ResponseEntity;
 
@@ -13,7 +12,7 @@ import java.util.concurrent.Future;
  */
 public interface ResponseHandler {
 
-    <T>Future<ResponseEntity<T>> asyncGet(ApiConfig config, String query, Class clazz, Map<Class<?>, ParameterizedTypeReference> typeReferences);
+    <T> Future<ResponseEntity<T>> asyncGet(ApiConfig config, String query, Class clazz, Map<Class<?>, ParameterizedTypeReference> typeReferences);
 
     <T> ResponseEntity<T> synchronousGet(ApiConfig config, String query, Class clazz, Map<Class<?>, ParameterizedTypeReference> typeReferences);
 }
