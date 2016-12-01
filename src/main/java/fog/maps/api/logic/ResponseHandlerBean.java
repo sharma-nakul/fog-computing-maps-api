@@ -1,15 +1,16 @@
-package fog.maps.api.service;
+package fog.maps.api.logic;
 
-import fog.maps.api.logic.HttpRequestHandler;
 import fog.maps.api.model.direction.DirectionResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 
@@ -23,38 +24,41 @@ public class ResponseHandlerBean implements ResponseHandler {
 
     private static final Logger LOG = LoggerFactory.getLogger(ResponseHandlerBean.class);
 
+    @Autowired
+    RestTemplate restTemplate;
 
     @Override
     @Async
-    public Future<ResponseEntity> getAsyncDirections(String hostName, String query, RestTemplate restTemplate) {
-        LOG.info("Direction request url: " + hostName + query);
-        LOG.info("> Fetching Directions");
-        String uri = hostName + query;
-        ResponseEntity<DirectionResult> responseEntity;
-        CompletableFuture<ResponseEntity> response = new CompletableFuture<>();
+    public <T>Future<ResponseEntity<T>> asyncGet(ApiConfig config, String query, Class clazz, Map<Class<?>, ParameterizedTypeReference> typeReferences) {
+        String requestUri = config.hostName + config.path+query;
+        LOG.info("Asynchronous request url: " + requestUri);
+        LOG.info("> Asynchronous GET");
+
+        ResponseEntity<T> responseEntity;
+        CompletableFuture<ResponseEntity<T>> response = new CompletableFuture<>();
         try {
             ParameterizedTypeReference typeReference=new ParameterizedTypeReference<DirectionResult>(){};
             HttpRequestHandler responseHandler=new HttpRequestHandler(restTemplate);
-            responseEntity = responseHandler.makeGetRequest(uri, DirectionResult.class,typeReference);
+            responseEntity = responseHandler.makeGetRequest(requestUri, typeReference);
             response.complete(responseEntity);
         } catch (Exception e) {
-            LOG.warn("Exception caught while fetching directions asynchronously.", e);
+            LOG.warn("Exception caught while performing asynchronous GET", e);
             response.completeExceptionally(e);
         }
-        LOG.info("< Fetching Directions");
+        LOG.info("< Asynchronous GET");
         return response;
     }
 
     @Override
-    public ResponseEntity getSyncDirections(String hostName, String query, RestTemplate restTemplate) {
-        String uri = hostName + query;
-        ResponseEntity<DirectionResult> responseEntity;
+    public <T>ResponseEntity<T> synchronousGet(ApiConfig config, String query, Class clazz, Map<Class<?>, ParameterizedTypeReference> typeReferences) {
+        String uri = config.hostName +config.path+ query;
+        ResponseEntity<T> responseEntity;
         try {
-            ParameterizedTypeReference typeReference=new ParameterizedTypeReference<DirectionResult>(){};
+            ParameterizedTypeReference typeRef=typeReferences.get(clazz);
             HttpRequestHandler responseHandler=new HttpRequestHandler(restTemplate);
-            responseEntity = responseHandler.makeGetRequest(uri, DirectionResult.class,typeReference);
+            responseEntity = responseHandler.makeGetRequest(uri, typeRef);
         } catch (Exception e) {
-            LOG.warn("Exception caught while fetching directions asynchronously.", e);
+            LOG.warn("Exception caught while performing synchronous GET", e);
             return null;
         }
         return responseEntity;

@@ -7,7 +7,7 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  * Created by nakulsharma on 30-11-2016.
- * Defines static methods to handle HTTP response
+ * Defines method(s) to handle HTTP response
  */
 public class HttpRequestHandler {
 
@@ -17,9 +17,7 @@ public class HttpRequestHandler {
         this.restTemplate = restTemplate;
     }
 
-    public <T> ResponseEntity<T> makeGetRequest(String uri,
-                                                    Class<T> clazz,
-                                                    ParameterizedTypeReference typeRef) {
+    public <T> ResponseEntity<T> makeGetRequest(String uri, ParameterizedTypeReference typeRef) {
 
         ResponseEntity<T> response = restTemplate.exchange(
                 uri,
