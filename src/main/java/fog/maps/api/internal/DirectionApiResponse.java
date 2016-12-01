@@ -66,7 +66,7 @@ public class DirectionApiResponse implements ApiResponse<DirectionResult> {
     }
 
     /**
-     * Provide API exception of status received from directions api
+     * Provide API exception of status received from directions api. Returns null if status is success.
      *
      * @return Valid API exception
      */
