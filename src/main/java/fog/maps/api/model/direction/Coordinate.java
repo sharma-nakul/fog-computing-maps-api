@@ -1,19 +1,24 @@
-package fog.maps.api.model.directions;
+package fog.maps.api.model.direction;
 
-import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Created by nakulsharma on 22-11-2016.
  * Place on Earth, represented by latitude and longitudes a.k.a coordinates
  */
-public class Coordinates{
+public class Coordinate {
     private double lat;
     private double lng;
 
     /**
      * Default Constructor
      */
-    public Coordinates() {
+    public Coordinate() {
+    }
+
+    public Coordinate(double lat, double lng) {
+        this.lat = lat;
+        this.lng = lng;
     }
 
     public double getLat() {
@@ -30,5 +35,11 @@ public class Coordinates{
 
     public void setLng(double lng) {
         this.lng = lng;
+    }
+
+    @JsonIgnore
+    public String getCoordinates()
+    {
+        return lat+","+lng;
     }
 }

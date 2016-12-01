@@ -1,11 +1,11 @@
-package fog.maps.api.model.directions;
+package fog.maps.api.model.direction;
 
 /**
  * Created by nakulsharma on 22-11-2016.
  * duration indicates the total duration of this leg, as a field with the following elements.
  * These fields may be absent if the duration is unknown.
  */
-public class Duration {
+class Duration {
 
     /**
      * text contains a human-readable representation of the duration.

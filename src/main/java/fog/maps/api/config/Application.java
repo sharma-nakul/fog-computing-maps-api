@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
@@ -15,9 +16,13 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @Configuration
 @ComponentScan(basePackages = "fog.maps.api")
 @EnableAutoConfiguration
-@EnableScheduling
+@EnableAsync
 public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
+        /*GeoApiContext geoApiContext = new GeoApiContext();
+        geoApiContext.setApiKey("AIzaSyDngvpXqERGAGvOAbyani3tgOoirZgBxSY");
+        DirectionsApi.getDirections(geoApiContext,"32732+bel+aire+ct+union+city","fremont+bart+station");
+        */
     }
 }

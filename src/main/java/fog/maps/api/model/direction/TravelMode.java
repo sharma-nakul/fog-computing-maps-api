@@ -1,4 +1,4 @@
-package fog.maps.api.model.directions;
+package fog.maps.api.model.direction;
 
 import java.util.Locale;
 

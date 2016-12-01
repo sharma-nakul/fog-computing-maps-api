@@ -1,6 +1,6 @@
 package fog.maps.api.controller;
 
-import fog.maps.api.model.TestModel;
+import fog.maps.api.model.test.TestModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by nakulsharma on 15-11-2016.
- * Controller to test proper functioning of RestFul web service in different ways
+ * Controller to test proper functioning of RestFul web logic in different ways
  */
 @RestController
 public class TestController {

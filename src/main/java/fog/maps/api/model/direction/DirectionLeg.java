@@ -1,6 +1,7 @@
-package fog.maps.api.model.directions;
+package fog.maps.api.model.direction;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Created by nakulsharma on 22-11-2016.
@@ -14,8 +15,8 @@ public class DirectionLeg {
     private Duration duration;
     private String startAddress;
     private String endAddress;
-    private Coordinates startLocation;
-    private Coordinates endLocation;
+    private Coordinate startLocation;
+    private Coordinate endLocation;
     private DirectionStep[] steps;
 
     //todo: DateTime arrivalTime and departureTime is available only in case of public transport. Use it, if needed
@@ -45,6 +46,7 @@ public class DirectionLeg {
         this.duration = duration;
     }
 
+    @JsonProperty("start_address")
     public String getStartAddress() {
         return startAddress;
     }
@@ -53,6 +55,7 @@ public class DirectionLeg {
         this.startAddress = startAddress;
     }
 
+    @JsonProperty("end_address")
     public String getEndAddress() {
         return endAddress;
     }
@@ -61,19 +64,21 @@ public class DirectionLeg {
         this.endAddress = endAddress;
     }
 
-    public Coordinates getStartLocation() {
+    @JsonProperty("start_location")
+    public Coordinate getStartLocation() {
         return startLocation;
     }
 
-    public void setStartLocation(Coordinates startLocation) {
+    public void setStartLocation(Coordinate startLocation) {
         this.startLocation = startLocation;
     }
 
-    public Coordinates getEndLocation() {
+    @JsonProperty("end_location")
+    public Coordinate getEndLocation() {
         return endLocation;
     }
 
-    public void setEndLocation(Coordinates endLocation) {
+    public void setEndLocation(Coordinate endLocation) {
         this.endLocation = endLocation;
     }
 

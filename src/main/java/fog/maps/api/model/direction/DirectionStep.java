@@ -1,6 +1,7 @@
-package fog.maps.api.model.directions;
+package fog.maps.api.model.direction;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Created by nakulsharma on 22-11-2016.
@@ -12,8 +13,8 @@ public class DirectionStep {
 
     private Distance distance;
     private Duration duration;
-    private Coordinates startLocation;
-    private Coordinates endLocation;
+    private Coordinate startLocation;
+    private Coordinate endLocation;
     private String htmlInstructions;
     private TravelMode travelMode;
 
@@ -41,22 +42,25 @@ public class DirectionStep {
         this.duration = duration;
     }
 
-    public Coordinates getStartLocation() {
+    @JsonProperty("start_location")
+    public Coordinate getStartLocation() {
         return startLocation;
     }
 
-    public void setStartLocation(Coordinates startLocation) {
+    public void setStartLocation(Coordinate startLocation) {
         this.startLocation = startLocation;
     }
 
-    public Coordinates getEndLocation() {
+    @JsonProperty("end_location")
+    public Coordinate getEndLocation() {
         return endLocation;
     }
 
-    public void setEndLocation(Coordinates endLocation) {
+    public void setEndLocation(Coordinate endLocation) {
         this.endLocation = endLocation;
     }
 
+    @JsonProperty("html_instructions")
     public String getHtmlInstructions() {
         return htmlInstructions;
     }
@@ -65,6 +69,7 @@ public class DirectionStep {
         this.htmlInstructions = htmlInstructions;
     }
 
+    @JsonProperty("travel_mode")
     public TravelMode getTravelMode() {
         return travelMode;
     }

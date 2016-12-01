@@ -1,11 +1,11 @@
-package fog.maps.api.model.directions;
+package fog.maps.api.model.direction;
 
 /**
  * Created by nakulsharma on 22-11-2016.
  * distance indicates the total distance covered by this leg.
  * These fields may be absent if the distance is unknown.
  */
-public class Distance {
+class Distance {
 
     /**
      * text contains a human-readable representation of the distance, displayed in units as used at the origin (or as

@@ -1,12 +1,13 @@
-package fog.maps.api.model.directions;
+package fog.maps.api.model.direction;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Created by nakulsharma on 22-11-2016.
- * A Directions API result. When the Directions API returns results, it places them within a routes
- * array. Even if the service returns no results (such as if the origin and/or destination doesn't
- * exist) it still returns an empty routes array.
+ * A Directions API result. When the Directions API returns results, it places them within a route
+ * array. Even if the logic returns no results (such as if the origin and/or destination doesn't
+ * exist) it still returns an empty route array.
  */
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -50,12 +51,21 @@ public class DirectionRoute {
         this.warnings = warnings;
     }
 
+    @JsonProperty("waypoint_order")
     public int[] getWaypointOrder() {
         return waypointOrder;
     }
 
     public void setWaypointOrder(int[] waypointOrder) {
         this.waypointOrder = waypointOrder;
+    }
+
+    public DirectionLeg[] getLegs() {
+        return legs;
+    }
+
+    public void setLegs(DirectionLeg[] legs) {
+        this.legs = legs;
     }
 
     public Bounds getBounds() {

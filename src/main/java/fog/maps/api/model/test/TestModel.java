@@ -1,4 +1,4 @@
-package fog.maps.api.model;
+package fog.maps.api.model.test;
 
 import java.io.Serializable;
 
