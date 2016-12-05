@@ -14,6 +14,4 @@ public interface IApiService {
     ResponseEntity getBestRoute(FogConfig config, String fogRequestQuery, MapsConfig mapsConfig, String mapRequestQuery);
 
     ResponseEntity getRouteRatings(FogConfig config, String fogRequestQuery, MapsConfig mapsConfig, String mapRequestQuery);
-
-    ResponseEntity getDirectionRoutes(MapsConfig mapsConfig, String mapRequestQuery);
 }

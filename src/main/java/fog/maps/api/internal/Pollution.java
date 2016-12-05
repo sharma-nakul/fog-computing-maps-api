@@ -47,7 +47,7 @@ public class Pollution {
 
     private Map<String, Integer> getPollutionRating(NodeResult nodeResults) {
         ArrayList<NodeResult> fogResultList = new ArrayList<>(Arrays.asList(nodeResults));
-        Map<String,Integer> pollutionRating=new HashMap<>();
+        Map<String, Integer> pollutionRating = new HashMap<>();
         for (NodeResult result : fogResultList) {
             for (NodeCoordinate coordinate : result.getCoordinates()) {
                 String key = Base64.getEncoder().encodeToString((coordinate.getLat() + "," + coordinate.getLng()).getBytes());
@@ -72,44 +72,42 @@ public class Pollution {
                         value = 0;
                         break;
                 }
-                pollutionRating.putIfAbsent(key,value);
+                pollutionRating.putIfAbsent(key, value);
             }
         }
         return pollutionRating;
     }
 
 
-    public Map<DirectionRoute,Integer> getRouteRatings(DirectionRoute[] routes, NodeResult nodeResult){
+    public Map<DirectionRoute, Integer> getRouteRatings(DirectionRoute[] routes, NodeResult nodeResult) {
         Map<DirectionRoute, Integer> routeRating = new HashMap<>();
-        Map<String,Integer> pollutionRating=getPollutionRating(nodeResult);
+        Map<String, Integer> pollutionRating = getPollutionRating(nodeResult);
         for (DirectionRoute r : routes) {
-            int rating=0;
-            for (DirectionLeg l: r.getLegs()) {
+            int rating = 0;
+            for (DirectionLeg l : r.getLegs()) {
                 for (DirectionStep step : l.getSteps()) {
                     String startCoordinates = Base64.getEncoder().encodeToString((step.getStartLocation().getCoordinates()).getBytes());
                     String endCoordinates = Base64.getEncoder().encodeToString((step.getEndLocation().getCoordinates()).getBytes());
-                    if(pollutionRating.containsKey(startCoordinates))
-                        rating+=pollutionRating.get(startCoordinates);
-                    else if(pollutionRating.containsKey(endCoordinates))
-                        rating+=pollutionRating.get(endCoordinates);
+                    if (pollutionRating.containsKey(startCoordinates))
+                        rating += pollutionRating.get(startCoordinates);
+                    else if (pollutionRating.containsKey(endCoordinates))
+                        rating += pollutionRating.get(endCoordinates);
                     else
                         continue;
                 }
             }
-            routeRating.putIfAbsent(r,rating);
-            LOG.info("Route rating is {}",rating);
+            routeRating.putIfAbsent(r, rating);
+            LOG.info("Route rating is {}", rating);
         }
         return routeRating;
     }
 
-    public DirectionRoute getBestRoute(DirectionRoute[] routes, NodeResult nodeResult){
-        Map<DirectionRoute,Integer> routeRating = getRouteRatings(routes, nodeResult);
-        Map.Entry<DirectionRoute,Integer> maxRating=null;
-        for(Map.Entry<DirectionRoute,Integer> entry: routeRating.entrySet())
-        {
-            if(maxRating==null||entry.getValue().compareTo(maxRating.getValue())>0)
-            {
-                maxRating=entry;
+    public DirectionRoute getBestRoute(DirectionRoute[] routes, NodeResult nodeResult) {
+        Map<DirectionRoute, Integer> routeRating = getRouteRatings(routes, nodeResult);
+        Map.Entry<DirectionRoute, Integer> maxRating = null;
+        for (Map.Entry<DirectionRoute, Integer> entry : routeRating.entrySet()) {
+            if (maxRating == null || entry.getValue().compareTo(maxRating.getValue()) > 0) {
+                maxRating = entry;
             }
         }
         return maxRating.getKey();
