@@ -1,4 +1,4 @@
-package fog.maps.api.model.route;
+package fog.maps.api.model.fognode;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import fog.maps.api.model.direction.Coordinate;
@@ -7,13 +7,13 @@ import java.util.ArrayList;
 
 /**
  * Created by nakulsharma on 23-11-2016.
- * Unique coordinates of all route for a source-destination.
+ * Unique coordinates of all fognode for a source-destination.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class RouteCoordinates {
+public class NodeRouteCoordinates {
 
     /**
-     * List if coordinates for all the route of a direction
+     * List if coordinates for all the fognode of a direction
      */
     private ArrayList<Coordinate> coordinates;
 
@@ -31,26 +31,26 @@ public class RouteCoordinates {
     /**
      * Default constructor
      */
-    public RouteCoordinates() {
+    public NodeRouteCoordinates() {
     }
 
     /**
      * Constructor to set all the fields/properties
-     * @param coordinates List if coordinates for all the route of a direction.
+     * @param coordinates List if coordinates for all the fognode of a direction.
      * @param status Http status like OK, NOT_FOUND, BAD_REQUEST, etc.
      * @param error_message Description of an error if status is not OK
      */
-    public RouteCoordinates(ArrayList<Coordinate> coordinates, String status, String error_message) {
+    public NodeRouteCoordinates(ArrayList<Coordinate> coordinates, String status, String error_message) {
         this.coordinates = coordinates;
         this.status = status;
         this.error_message = error_message;
     }
 
     /**
-     * Constructor to set coordinates of route
+     * Constructor to set coordinates of fognode
      * @param coordinates
      */
-    public RouteCoordinates(ArrayList<Coordinate> coordinates) {
+    public NodeRouteCoordinates(ArrayList<Coordinate> coordinates) {
         this.coordinates = coordinates;
     }
 

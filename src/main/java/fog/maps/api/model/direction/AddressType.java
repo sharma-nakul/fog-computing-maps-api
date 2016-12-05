@@ -7,9 +7,9 @@ package fog.maps.api.model.direction;
 enum AddressType {
     STREET_ADDRESS("street_address"),
     /**
-     * Indicates a named route (such as "US 101").
+     * Indicates a named fognode (such as "US 101").
      */
-    ROUTE("route"),
+    ROUTE("fognode"),
 
     /**
      * Indicates a major intersection, usually of two major roads.

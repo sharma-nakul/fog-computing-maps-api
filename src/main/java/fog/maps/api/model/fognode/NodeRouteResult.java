@@ -1,30 +1,24 @@
-package fog.maps.api.model.direction;
+package fog.maps.api.model.fognode;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import fog.maps.api.model.direction.Bounds;
 
 /**
- * Created by nakulsharma on 22-11-2016.
- * A Directions API result. When the Directions API returns results, it places them within a fognode
- * array. Even if the internal returns no results (such as if the origin and/or destination doesn't
- * exist) it still returns an empty fognode array.
+ * Created by nakulsharma on 01-12-2016.
+ * Mapped model of fognode results and pollution level results
  */
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class DirectionRoute {
+public class NodeRouteResult {
+
     private String summary;
     private String copyrights;
     private String[] warnings;
     private int[] waypointOrder;
     private Bounds bounds;
-    private DirectionLeg[] legs;
+    private NodeDirectionLeg[] legs;
 
-    //todo: EncodedPolyline polyline object is not set here. Set it if required.
-
-    /**
-     * Default Constructor
-     */
-    public DirectionRoute() {
+    public NodeRouteResult() {
     }
 
     public String getSummary() {
@@ -51,21 +45,12 @@ public class DirectionRoute {
         this.warnings = warnings;
     }
 
-    @JsonProperty("waypoint_order")
     public int[] getWaypointOrder() {
         return waypointOrder;
     }
 
     public void setWaypointOrder(int[] waypointOrder) {
         this.waypointOrder = waypointOrder;
-    }
-
-    public DirectionLeg[] getLegs() {
-        return legs;
-    }
-
-    public void setLegs(DirectionLeg[] legs) {
-        this.legs = legs;
     }
 
     public Bounds getBounds() {
@@ -76,5 +61,11 @@ public class DirectionRoute {
         this.bounds = bounds;
     }
 
+    public NodeDirectionLeg[] getLegs() {
+        return legs;
+    }
 
+    public void setLegs(NodeDirectionLeg[] legs) {
+        this.legs = legs;
+    }
 }

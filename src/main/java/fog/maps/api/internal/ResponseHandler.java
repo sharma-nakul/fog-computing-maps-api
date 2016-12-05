@@ -12,7 +12,7 @@ import java.util.concurrent.Future;
  */
 public interface ResponseHandler {
 
-    <T> Future<ResponseEntity<T>> asyncGet(ApiConfig config, String query, Class clazz, Map<Class<?>, ParameterizedTypeReference> typeReferences);
+    <T> Future<ResponseEntity<T>> asyncGet(MapsConfig config, String query, Class clazz, Map<Class<?>, ParameterizedTypeReference> typeReferences);
 
-    <T> ResponseEntity<T> synchronousGet(ApiConfig config, String query, Class clazz, Map<Class<?>, ParameterizedTypeReference> typeReferences);
+    <T> ResponseEntity<T> synchronousGet(MapsConfig config, String query, Class clazz, Map<Class<?>, ParameterizedTypeReference> typeReferences);
 }

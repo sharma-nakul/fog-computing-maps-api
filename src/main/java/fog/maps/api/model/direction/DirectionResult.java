@@ -1,30 +1,29 @@
 package fog.maps.api.model.direction;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Created by nakulsharma on 22-11-2016.
- * DirectionResult represents the result from Google Maps Direction API web logic.
+ * DirectionResult represents the result from Google Maps Direction API web internal.
  */
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DirectionResult {
-    private DirectionRoute[] routes;
-    //private GeocodedWaypoint[] geocodedWaypoints;
-    private String status;
-    //private String errorMessage;
 
+    private String status;
+
+    @JsonProperty("error_message")
+    private String errorMessage;
+
+    private DirectionRoute[] routes;
 
     public DirectionResult() {
     }
 
-    public DirectionRoute[] getRoutes() {
-        return routes;
-    }
+    //todo: fix Geocoded waypoints - it is throwing error at ADDRESS_TYPE field of its model.
+    //private GeocodedWaypoint[] geocodedWaypoints;
 
-    public void setRoutes(DirectionRoute[] routes) {
-        this.routes = routes;
-    }
 
     public String getStatus() {
         return status;
@@ -34,4 +33,20 @@ public class DirectionResult {
         this.status = status;
     }
 
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
+    }
+
+    public DirectionRoute[] getRoutes() {
+        return routes;
+    }
+
+    public void setRoutes(DirectionRoute[] routes) {
+        this.routes = routes;
+    }
 }

@@ -1,0 +1,110 @@
+{
+  "coordinates": [
+    {
+      "lat": 37.5780743,
+      "lng": -122.0472379,
+      "pollution_level":"HIGH"
+    },
+    {
+      "lat": 37.5642754,
+      "lng": -121.9795471,
+      "pollution_level":"MEDIUM_HIGH"
+    },
+    {
+      "lat": 37.5720264,
+      "lng": -122.0715141,
+      "pollution_level":"MEDIUM"
+    },
+    {
+      "lat": 37.5727011,
+      "lng": -122.0683914,
+      "pollution_level":"MEDIUM_LOW"
+    },
+    {
+      "lat": 37.5608836,
+      "lng": -122.0641992,
+      "pollution_level":"LOW"
+    },
+    {
+      "lat": 37.5613905,
+      "lng": -121.9953314,
+      "pollution_level":"HIGH"
+    },
+    {
+      "lat": 37.55908220000001,
+      "lng": -121.9783372,
+      "pollution_level":"HIGH"
+    },
+    {
+      "lat": 37.5580441,
+      "lng": -121.9757158,
+      "pollution_level":"LOW"
+    },
+    {
+      "lat": 37.5581955,
+      "lng": -121.9771998,
+      "pollution_level":"LOW"
+    },
+    {
+      "lat": 37.5683096,
+      "lng": -122.0726291,
+      "pollution_level":"LOW"
+    },
+    {
+      "lat": 37.5817176,
+      "lng": -122.0547078,
+      "pollution_level":"LOW"
+    },
+    {
+      "lat": 37.5576183,
+      "lng": -121.9762542,
+      "pollution_level":"MEDIUM_LOW"
+    },
+    {
+      "lat": 37.5599512,
+      "lng": -121.9780105,
+      "pollution_level":"MEDIUM_HIGH"
+    },
+    {
+      "lat": 37.5715115,
+      "lng": -122.0634342,
+      "pollution_level":"LOW"
+    },
+    {
+      "lat": 37.5795107,
+      "lng": -122.0502484,
+      "pollution_level":"LOW"
+    },
+    {
+      "lat": 37.565346,
+      "lng": -122.0678112,
+      "pollution_level":"LOW"
+    },
+    {
+      "lat": 37.55858449999999,
+      "lng": -121.9767618,
+      "pollution_level":"HIGH"
+    },
+    {
+      "lat": 37.57155840000001,
+      "lng": -122.070624,
+      "pollution_level":"HIGH"
+    },
+    {
+      "lat": 37.5750854,
+      "lng": -122.0412023,
+      "pollution_level":"HIGH"
+    },
+    {
+      "lat": 37.5602665,
+      "lng": -121.9789405,
+      "pollution_level":"HIGH"
+    },
+    {
+      "lat": 37.5581225,
+      "lng": -122.0067948,
+      "pollution_level":"HIGH"
+    }
+  ],
+  "status": "OK"
+}

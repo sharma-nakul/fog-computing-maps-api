@@ -29,7 +29,7 @@ public class ResponseHandlerBean implements ResponseHandler {
 
     @Override
     @Async
-    public <T> Future<ResponseEntity<T>> asyncGet(ApiConfig config, String query, Class clazz, Map<Class<?>, ParameterizedTypeReference> typeReferences) {
+    public <T> Future<ResponseEntity<T>> asyncGet(MapsConfig config, String query, Class clazz, Map<Class<?>, ParameterizedTypeReference> typeReferences) {
         String requestUri = config.hostName + config.path + query;
         LOG.info("Asynchronous request url: " + requestUri);
         LOG.info("> Asynchronous GET");
@@ -43,7 +43,7 @@ public class ResponseHandlerBean implements ResponseHandler {
             responseEntity = responseHandler.makeGetRequest(requestUri, typeReference);
             response.complete(responseEntity);
         } catch (Exception e) {
-            LOG.warn("Exception caught while performing asynchronous GET", e);
+            LOG.error("Exception caught while performing asynchronous GET. {}", e.getMessage());
             response.completeExceptionally(e);
         }
         LOG.info("< Asynchronous GET");
@@ -51,17 +51,20 @@ public class ResponseHandlerBean implements ResponseHandler {
     }
 
     @Override
-    public <T> ResponseEntity<T> synchronousGet(ApiConfig config, String query, Class clazz, Map<Class<?>, ParameterizedTypeReference> typeReferences) {
+    public <T> ResponseEntity<T> synchronousGet(MapsConfig config, String query, Class clazz, Map<Class<?>, ParameterizedTypeReference> typeReferences) {
         String uri = config.hostName + config.path + query;
+        LOG.info("Synchronous request url: "+uri);
+        LOG.info("> Synchronous GET");
         ResponseEntity<T> responseEntity;
         try {
             ParameterizedTypeReference typeRef = typeReferences.get(clazz);
             HttpRequestHandler responseHandler = new HttpRequestHandler(restTemplate);
             responseEntity = responseHandler.makeGetRequest(uri, typeRef);
         } catch (Exception e) {
-            LOG.warn("Exception caught while performing synchronous GET", e);
+            LOG.error("Exception caught while performing synchronous GET. {}", e.getMessage());
             return null;
         }
+        LOG.info("< Synchronous GET");
         return responseEntity;
     }
 }

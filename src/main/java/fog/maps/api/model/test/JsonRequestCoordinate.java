@@ -1,7 +1,7 @@
 package fog.maps.api.model.test;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import fog.maps.api.model.route.PollutionLevel;
+import fog.maps.api.model.fognode.PollutionLevel;
 
 /**
  * Created by nakulsharma on 29-11-2016.

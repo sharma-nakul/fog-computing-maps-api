@@ -5,7 +5,7 @@ package fog.maps.api.model.direction;
  * duration indicates the total duration of this leg, as a field with the following elements.
  * These fields may be absent if the duration is unknown.
  */
-class Duration {
+public class Duration {
 
     /**
      * text contains a human-readable representation of the duration.

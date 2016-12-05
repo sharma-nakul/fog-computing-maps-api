@@ -8,7 +8,6 @@ import org.springframework.scheduling.annotation.AsyncConfigurer;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.Executor;
 
@@ -36,11 +35,6 @@ public class AsyncConfig implements AsyncConfigurer {
 
     @Override
     public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
-        return new AsyncUncaughtExceptionHandler() {
-            @Override
-            public void handleUncaughtException(Throwable ex, Method method, Object... objects) {
-                LOG.error("Error executing async method {} with params {}.", method.getName(), Arrays.asList(objects), ex);
-            }
-        };
+        return (ex, method, objects) -> LOG.error("Error executing async method {} with params {}.", method.getName(), Arrays.asList(objects), ex);
     }
 }

@@ -1,6 +1,6 @@
 package fog.maps.api.model.test;
 
-import fog.maps.api.model.route.FogNodeStatusCode;
+import fog.maps.api.model.fognode.NodeStatusCode;
 
 import java.util.List;
 
@@ -11,14 +11,14 @@ import java.util.List;
 public class JsonRequestObject {
 
     /**
-     * List if coordinates with pollution level for all the route of a direction
+     * List if coordinates with pollution level for all the fognode of a direction
      */
     private List<JsonRequestCoordinate> coordinates;
 
     /**
      * Response status
      */
-    private FogNodeStatusCode status;
+    private NodeStatusCode status;
 
     public JsonRequestObject() {
     }
@@ -35,11 +35,11 @@ public class JsonRequestObject {
         this.coordinates = coordinates;
     }
 
-    public FogNodeStatusCode getStatus() {
+    public NodeStatusCode getStatus() {
         return status;
     }
 
-    public void setStatus(FogNodeStatusCode status) {
+    public void setStatus(NodeStatusCode status) {
         this.status = status;
     }
 }

@@ -1,4 +1,4 @@
-package fog.maps.api.model.route;
+package fog.maps.api.model.fognode;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * Created by nakulsharma on 24-11-2016.
  * Coordinates and pollution level model of IoT device
  */
-public class FogNodeCoordinate {
+public class NodeCoordinate {
 
     private double lat;
     private double lng;
@@ -17,7 +17,7 @@ public class FogNodeCoordinate {
     /**
      * Default Constructor
      */
-    public FogNodeCoordinate() {
+    public NodeCoordinate() {
     }
 
     public double getLat() {

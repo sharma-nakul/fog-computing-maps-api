@@ -1,4 +1,4 @@
-package fog.maps.api.model.route;
+package fog.maps.api.model.fognode;
 
 import java.util.Locale;
 

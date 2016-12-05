@@ -5,7 +5,7 @@ package fog.maps.api.model.direction;
  * distance indicates the total distance covered by this leg.
  * These fields may be absent if the distance is unknown.
  */
-class Distance {
+public class Distance {
 
     /**
      * text contains a human-readable representation of the distance, displayed in units as used at the origin (or as

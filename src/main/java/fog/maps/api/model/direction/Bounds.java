@@ -4,7 +4,7 @@ package fog.maps.api.model.direction;
  * Created by nakulsharma on 22-11-2016.
  * Bounds contains the viewport bounding box of the overview_polyline
  */
-class Bounds{
+public class Bounds{
     private Coordinate northeast;
     private Coordinate southwest;
 
