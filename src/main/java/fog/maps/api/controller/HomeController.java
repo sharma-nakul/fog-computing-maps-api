@@ -16,6 +16,4 @@ public class HomeController {
     public String home() {
         return "home";
     }
-
-    // Google API Key -> AIzaSyCUuMGzXs2TBy1pSOo7W2LbObmKRrVcLQo
 }
