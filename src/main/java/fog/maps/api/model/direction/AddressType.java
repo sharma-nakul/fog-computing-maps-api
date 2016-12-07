@@ -212,6 +212,4 @@ enum AddressType {
     public String getAddressType() {
         return addressType;
     }
-
-    //todo: throw UnsupportedOperationException for UNKNOWN address type.
 }

@@ -1,8 +1,6 @@
 package fog.maps.api.controller;
 
 import fog.maps.api.model.direction.DirectionResult;
-import fog.maps.api.model.fognode.NodeResult;
-import fog.maps.api.service.IApiService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

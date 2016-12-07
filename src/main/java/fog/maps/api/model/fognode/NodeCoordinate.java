@@ -12,7 +12,7 @@ public class NodeCoordinate {
     private double lng;
 
     @JsonProperty("pollution_level")
-    private PollutionLevel pollutionLevel;
+    private Integer pollutionLevel;
 
     /**
      * Default Constructor
@@ -36,11 +36,11 @@ public class NodeCoordinate {
         this.lng = lng;
     }
 
-    public PollutionLevel getPollutionLevel() {
+    public Integer getPollutionLevel() {
         return pollutionLevel;
     }
 
-    public void setPollutionLevel(PollutionLevel pollutionLevel) {
+    public void setPollutionLevel(Integer pollutionLevel) {
         this.pollutionLevel = pollutionLevel;
     }
 }

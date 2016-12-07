@@ -2,6 +2,8 @@ package fog.maps.api.service;
 
 import fog.maps.api.internal.FogConfig;
 import fog.maps.api.internal.MapsConfig;
+import fog.maps.api.model.fognode.FogRequest;
+import fog.maps.api.model.fognode.FogResponse;
 import org.springframework.http.ResponseEntity;
 
 /**
@@ -11,7 +13,9 @@ import org.springframework.http.ResponseEntity;
 
 public interface IApiService {
 
-    ResponseEntity getBestRoute(FogConfig config, String fogRequestQuery, MapsConfig mapsConfig, String mapRequestQuery);
+    ResponseEntity getBestRoute(FogConfig config, MapsConfig mapsConfig, String mapRequestQuery);
 
-    ResponseEntity getRouteRatings(FogConfig config, String fogRequestQuery, MapsConfig mapsConfig, String mapRequestQuery);
+    ResponseEntity getRouteRatings(FogConfig config, MapsConfig mapsConfig, String mapRequestQuery);
+
+    FogResponse getResponse(String targetUrl, FogRequest testRequest);
 }

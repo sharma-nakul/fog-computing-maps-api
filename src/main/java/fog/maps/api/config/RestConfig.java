@@ -50,7 +50,6 @@ public class RestConfig
         return restTemplate;
     }
 
-    //todo: replace this and test it. Current method is adding extra line of code
   /*  @Bean
     public ObjectMapper jacksonObjectMapper() {
         return new ObjectMapper().setPropertyNamingStrategy(

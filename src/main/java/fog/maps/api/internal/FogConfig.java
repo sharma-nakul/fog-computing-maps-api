@@ -7,9 +7,7 @@ package fog.maps.api.internal;
 
 public class FogConfig {
     public String path;
-    //todo: put hostName given by DEEP
-    public String hostName = "";
-    public String requestVerb = "GET";
+    public String hostName = "http://ec2-35-165-60-184.us-west-2.compute.amazonaws.com:8000";
 
     public FogConfig(String path) {
         this.path = path;
@@ -19,7 +17,7 @@ public class FogConfig {
         this.hostName = hostName;
     }
 
-    public void setRequestVerb(String requestVerb) {
-        this.requestVerb = requestVerb;
+    public String getUrl(){
+        return hostName+path;
     }
 }
